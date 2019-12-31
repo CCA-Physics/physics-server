@@ -1,0 +1,3 @@
+nssm stop tunnels
+
+PAUSE

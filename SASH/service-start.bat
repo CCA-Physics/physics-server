@@ -1,0 +1,3 @@
+nssm start tunnels
+
+PAUSE
