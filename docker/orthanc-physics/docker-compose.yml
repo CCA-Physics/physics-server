@@ -1,0 +1,30 @@
+# Copyright (C) 2019 Cancer Care Associates
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+
+#     http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+version: "3.6"
+
+services:
+  physics-server-orthanc-physics:
+    restart: unless-stopped
+    image: osimis/orthanc:19.11.2
+    ports: ["4242:4242", "8042:8042"]
+
+    volumes:
+      - ./settings:/etc/orthanc
+      - ./storage:/var/lib/orthanc/db
+      - ./scripts:/etc/share/orthanc/scripts
+
+    entrypoint: /bin/bash -c
+    command: ['/docker-entrypoint.sh --verbose /etc/orthanc']

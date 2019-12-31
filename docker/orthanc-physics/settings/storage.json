@@ -1,0 +1,6 @@
+{
+"StorageDirectory": "/var/lib/orthanc/db",
+"MaximumStorageSize": 0,
+"MaximumPatientCount": 0,
+"StoreDicom": true
+}
