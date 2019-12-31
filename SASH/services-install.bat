@@ -1,3 +1,5 @@
+SET PATH="C:\Users\Public\Documents\physics-server\bin";%PATH%
+
 nssm install tunnels tunnels.bat
 
 nssm set tunnels Application C:\Users\Public\Documents\physics-server\SASH\tunnels.bat
