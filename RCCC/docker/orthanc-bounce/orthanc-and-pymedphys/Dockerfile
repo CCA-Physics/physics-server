@@ -1,7 +1,5 @@
 FROM osimis/orthanc:19.11.2
 
-ENV PATH /opt/conda/bin:$PATH
-
 RUN \
   apt-get update --fix-missing && \
   apt-get install --fix-missing -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
@@ -10,8 +8,13 @@ RUN \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
+ENV HOME /root
+
 RUN curl https://pyenv.run | bash
 
-RUN pyenv install 3.7.5 && pyenv global 3.7.5
+ENV PYENV_ROOT $HOME/.pyenv
+ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
 
-RUN pip install pymedphys
+RUN pyenv install 3.7.5 && pyenv global 3.7.5 && pyenv rehash
+
+RUN pip install pymedphys==0.17.1
