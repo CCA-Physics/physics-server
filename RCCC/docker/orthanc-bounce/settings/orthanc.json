@@ -4,7 +4,7 @@
     "DicomModalities": {
       "DoseCHECK": [
         "SunNuclear_SCP",
-        "localhost",
+        "host.docker.internal",
         104
       ]
     },

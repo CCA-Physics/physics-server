@@ -17,4 +17,4 @@ ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
 
 RUN pyenv install 3.7.5 && pyenv global 3.7.5 && pyenv rehash
 
-RUN pip install pymedphys==0.17.1
+RUN pip install pymedphys[library]==0.17.1

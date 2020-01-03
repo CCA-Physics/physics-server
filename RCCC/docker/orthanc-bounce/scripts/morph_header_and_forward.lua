@@ -18,6 +18,7 @@ function OnStoredInstance(instanceId, tags, metadata, origin)
       print(tags['SOPClassUID'])
   
       if tags['SOPClassUID'] == structure_UID or tags['SOPClassUID'] == plan_UID then
+        print('Saving a DICOM to file ' .. received_filepath)
         local target = assert(io.open(received_filepath, 'wb'))
         target:write(dicom)
         target:close()
@@ -27,11 +28,9 @@ function OnStoredInstance(instanceId, tags, metadata, origin)
   
       if tags['SOPClassUID'] == structure_UID then
         print('Converting a structure set')
-        os.execute(
-          'pymedphys dicom adjust-RED -i ' .. received_filepath .. ' ' .. intermediate_filepath ..
-          '"Couch Edge" 1.1 "Couch Foam Half Couch" 0.06 "Couch Outer Half Couch" 0.5' ..
-          '"H&N Board" 0.2 "H&N Foam" 0.2 "BB Foam" 0.1 "BB Outer" 0.1 "BB Racket" 0.1'
-        )
+        adjustment_string = 'pymedphys dicom adjust-RED -i ' .. received_filepath .. ' ' .. intermediate_filepath .. ' "Couch Edge" 1.1 "Couch Foam Half Couch" 0.06 "Couch Outer Half Couch" 0.5 "H&N Board" 0.2 "H&N Foam" 0.2 "BB Foam" 0.1 "BB Outer" 0.1 "BB Racket" 0.1'
+        print(adjustment_string)
+        os.execute(adjustment_string)
         os.execute('pymedphys dicom adjust-RED-by-structure-name ' .. intermediate_filepath .. ' ' .. converted_filepath)
   
         os.remove(intermediate_filepath)
