@@ -8,6 +8,6 @@ RUN jupyter serverextension enable --py jupyterlab --sys-prefix
 RUN pip install pymedphys[library,difficult,labs]
 RUN jupyter lab build
 
-RUN echo '. /usr/local/bin/start.sh jupyter labhub --ip=0.0.0.0 "$@"' > ./start-singleuser.sh
+RUN echo '. /usr/local/bin/start.sh jupyter lab --ip=0.0.0.0 --SingleUserNotebookApp.default_url=/lab "$@"' > ./start-singleuser.sh
 
 USER jovyan
