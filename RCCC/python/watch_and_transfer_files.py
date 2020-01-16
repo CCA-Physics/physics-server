@@ -36,7 +36,13 @@ def create_event_handler(to_path, from_path):
 
         print(f"Moved from {event_path} to {destination}")
         
-        shutil.move(event_path, destination)
+        while True:
+            try:
+                destination.parent.mkdir(exist_ok=True, parents=True)
+                shutil.move(event_path, destination)
+                break
+            except PermissionError:
+                time.sleep(1)
 
     def on_deleted(event):
         pass
