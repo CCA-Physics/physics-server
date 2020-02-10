@@ -1,0 +1,5 @@
+{
+    "DicomModalities" : {
+        "Delta4" : [ "Delta4_Receiver", "utilsvr", 105 ]
+    }
+}
