@@ -12,10 +12,10 @@ nssm set icom_listening_peter AppDirectory C:\Users\Public\Documents\physics-ser
 
 
 nssm set icom_listening_harry AppStdout C:\Users\Public\Documents\physics-server\RCCC\icom\harry_listening_log.txt
-nssm set icom_listening_harry AppStdout C:\Users\Public\Documents\physics-server\RCCC\icom\harry_listening_log.txt
+nssm set icom_listening_harry AppStderr C:\Users\Public\Documents\physics-server\RCCC\icom\harry_listening_log.txt
 
 nssm set icom_listening_peter AppStdout C:\Users\Public\Documents\physics-server\RCCC\icom\peter_listening_log.txt
-nssm set icom_listening_peter AppStdout C:\Users\Public\Documents\physics-server\RCCC\icom\peter_listening_log.txt
+nssm set icom_listening_peter AppStderr C:\Users\Public\Documents\physics-server\RCCC\icom\peter_listening_log.txt
 
 
 nssm set icom_listening_harry AppRestartDelay 300000
