@@ -1,1 +1,1 @@
-pymedphys icom listen 192.168.100.201 D:\iComLogFiles
+pymedphys icom listen 192.168.17.40 \\NBCCC-pdc\physics\NBCC-DataExchange\iCom\live
