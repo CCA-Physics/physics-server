@@ -8,7 +8,8 @@ function OnStoredInstance(instanceId, tags, metadata, origin)
   
       -- Write the DICOM content to some temporary file
       local received_filepath = instanceId .. '-received.dcm'
-      local intermediate_filepath = instanceId .. '-intermediate.dcm'
+      local intermediate_filepath_a = instanceId .. '-intermediate-a.dcm'
+      local intermediate_filepath_b = instanceId .. '-intermediate-b.dcm'
       local converted_filepath = instanceId .. '-converted.dcm'
   
       local plan_UID = '1.2.840.10008.5.1.4.1.1.481.5'
@@ -27,13 +28,30 @@ function OnStoredInstance(instanceId, tags, metadata, origin)
       end
   
       if tags['SOPClassUID'] == structure_UID then
+        print(' ')
+        print('=============== STRUCTURE START ===================')
+        print(' ')
+
         print('Converting a structure set')
-        adjustment_string = 'pymedphys dicom adjust-RED -i ' .. received_filepath .. ' ' .. intermediate_filepath .. ' "Couch Edge" 1.1 "Couch Foam Half Couch" 0.06 "Couch Outer Half Couch" 0.5 "H&N Board" 0.2 "H&N Foam" 0.2 "BB Foam" 0.1 "BB Outer" 0.1 "BB Racket" 0.1'
+
+        adjustment_string = 'pymedphys dicom adjust-RED -i ' .. received_filepath .. ' ' .. intermediate_filepath_a .. ' "Couch Edge" 1.1 "Couch Foam Half Couch" 0.06 "Couch Outer Half Couch" 0.5 "H&N Board" 0.2 "H&N Foam" 0.2 "BB Foam" 0.1 "BB Outer" 0.1 "BB Racket" 0.1'
         print(adjustment_string)
         os.execute(adjustment_string)
-        os.execute('pymedphys dicom adjust-RED-by-structure-name ' .. intermediate_filepath .. ' ' .. converted_filepath)
+
+        adjust_by_name = 'pymedphys dicom adjust-RED-by-structure-name ' .. intermediate_filepath_a .. ' ' .. intermediate_filepath_b
+        print(adjust_by_name)
+        os.execute(adjust_by_name)
+
+        merge_contours = 'pymedphys dicom merge-contours ' .. intermediate_filepath_b .. ' ' .. converted_filepath .. ' --structures patient'
+        print(merge_contours)
+        os.execute(merge_contours)
   
-        os.remove(intermediate_filepath)
+        os.remove(intermediate_filepath_a)
+        os.remove(intermediate_filepath_b)
+
+        print(' ')
+        print('================ STRUCTURE END ====================')
+        print(' ')
   
       elseif tags['SOPClassUID'] == plan_UID then
         print('Converting a plan')

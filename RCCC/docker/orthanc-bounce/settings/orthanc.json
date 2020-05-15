@@ -10,6 +10,13 @@
     },
     "LuaScripts": [
       "/etc/share/orthanc/scripts/morph_header_and_forward.lua"
-    ]
+    ],
+
+
+  "DicomScpTimeout" : 180,
+  "DicomScuTimeout" : 60,
+  "HttpThreadsCount": 100
   }
+  
+
   

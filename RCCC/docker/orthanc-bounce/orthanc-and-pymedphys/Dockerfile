@@ -17,4 +17,6 @@ ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
 
 RUN pyenv install 3.7.5 && pyenv global 3.7.5 && pyenv rehash
 
-RUN pip install pymedphys==0.26.0
+RUN pip install numpy pydicom shapely
+
+RUN pip install pymedphys==0.27.0dev2 --no-deps
