@@ -20,6 +20,6 @@ services:
     image: nginx:1.15
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./dosecheck-error.log:/var/log/nginx/dosecheck-error.log
+      - ./host-log-dir:/var/log/nginx/host-log-dir
     ports:
       - "80:80"
