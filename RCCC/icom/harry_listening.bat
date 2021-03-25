@@ -1,5 +1,5 @@
-SET PYTHON_DIR="C:\Users\PExIT\AppData\Local\pypoetry\Cache\virtualenvs\pymedphys-q3DRi5lT-py3.8"
+SET PYTHON_DIR="C:\Users\Public\Documents\python"
 cd %PYTHON_DIR%
 SET PATH=%PYTHON_DIR%;%PYTHON_DIR%\Scripts
 
-pymedphys icom listen 192.168.100.201 D:\iComLogFiles
+pymedphys icom listen 192.168.100.201 \\rccc-pdc\PExIT\DataExchange\iCom
