@@ -3,6 +3,6 @@ cd %PYTHON_DIR%
 SET PATH=%PYTHON_DIR%;%PYTHON_DIR%\Scripts;"%PATH%"
 
 pip install numpy
-pip install pymedphys==0.30.0dev0 --no-deps
+pip install pymedphys==0.31.0dev2 --no-deps
 
 PAUSE

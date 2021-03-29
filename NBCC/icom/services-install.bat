@@ -1,13 +1,31 @@
-SET PATH="C:\Users\Public\Documents\physics-server\bin";%PATH%
+SET GIT_ROOT=C:\Users\Public\Documents\physics-server
+SET PATH=%GIT_ROOT%\bin;%PATH%
+SET HERE=%GIT_ROOT%\NBCC\icom
 
-nssm install icom_listening_4299 4299_listening.bat
 
-nssm set icom_listening_4299 Application C:\Users\Public\Documents\physics-server\NBCC\icom\4299_listening.bat
-nssm set icom_listening_4299 AppDirectory C:\Users\Public\Documents\physics-server\NBCC\icom
+SET SERIAL=4299
 
-nssm set icom_listening_4299 AppStdout C:\Users\Public\Documents\physics-server\NBCC\icom\4299_listening_log.txt
-nssm set icom_listening_4299 AppStderr C:\Users\Public\Documents\physics-server\NBCC\icom\4299_listening_log.txt
+nssm install icom_listening_%SERIAL% %SERIAL%_listening.bat
 
-nssm set icom_listening_4299 AppRestartDelay 300000
+nssm set icom_listening_%SERIAL% Application %HERE%\%SERIAL%_listening.bat
+nssm set icom_listening_%SERIAL% AppDirectory %HERE%
+
+nssm set icom_listening_%SERIAL% AppStdout %HERE%\%SERIAL%_listening_log.txt
+nssm set icom_listening_%SERIAL% AppStderr %HERE%\%SERIAL%_listening_log.txt
+
+nssm set icom_listening_%SERIAL% AppRestartDelay 300000
+
+
+SET SERIAL=9183
+
+nssm install icom_listening_%SERIAL% %SERIAL%_listening.bat
+
+nssm set icom_listening_%SERIAL% Application %HERE%\%SERIAL%_listening.bat
+nssm set icom_listening_%SERIAL% AppDirectory %HERE%
+
+nssm set icom_listening_%SERIAL% AppStdout %HERE%\%SERIAL%_listening_log.txt
+nssm set icom_listening_%SERIAL% AppStderr %HERE%\%SERIAL%_listening_log.txt
+
+nssm set icom_listening_%SERIAL% AppRestartDelay 300000
 
 PAUSE
