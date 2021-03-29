@@ -1,6 +1,7 @@
 ssh -N -o ServerAliveInterval=241 pexit@165.228.124.29 -p 38471 \
   `# Forwarding from RCCC to NBCC` \
   -L 0.0.0.0:80:localhost:80 `# http://physics-server/, http://dosecheck.physics-server/, and http://dicom.physics-server/` \
+  -L 0.0.0.0:30104:localhost:30104 `# DoseCHECK direct DICOM receiver` \
   -L 0.0.0.0:34242:localhost:34242 `# orthanc-bounce DICOM receiver` \
   -L 0.0.0.0:4242:localhost:4242 `# orthanc-physics DICOM receiver` \
   `# Forwarding from NBCC to RCCC` \
