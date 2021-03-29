@@ -1,1 +1,0 @@
-python "C:\Users\Public\Documents\physics-server\RCCC\start_ssh_server.py"

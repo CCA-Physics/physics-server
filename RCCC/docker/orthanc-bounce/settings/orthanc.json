@@ -5,7 +5,7 @@
       "DoseCHECK": [
         "SunNuclear_SCP",
         "host.docker.internal",
-        104
+        30104
       ]
     },
     "LuaScripts": [
